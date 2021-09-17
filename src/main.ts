@@ -8,8 +8,6 @@ function launch(){
 
   const app = document.querySelector<HTMLDivElement>('#app')!
 
-  const faSignOut = `<svg viewBox="0 0 512 512"><path d="M497 273L329 441c-15 15-41 4.5-41-17v-96H152c-13.3 0-24-10.7-24-24v-96c0-13.3 10.7-24 24-24h136V88c0-21.4 25.9-32 41-17l168 168c9.3 9.4 9.3 24.6 0 34zM192 436v-40c0-6.6-5.4-12-12-12H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h84c6.6 0 12-5.4 12-12V76c0-6.6-5.4-12-12-12H96c-53 0-96 43-96 96v192c0 53 43 96 96 96h84c6.6 0 12-5.4 12-12z" fill="#2c3e50"></path></svg>`;
-
   const story = new Story(storyJson);
 
   app.innerHTML = `
@@ -17,7 +15,7 @@ function launch(){
         <div id="story" class="container">
             <div class="header">
                 <h1>Une histoire pour dormir</h1>
-                <h2 class="byline">par smwhr et Barnabé</h2>
+                <h2 class="byline">par Barnabé et son papa</h2>
             </div>
         </div>
     </div>
@@ -34,11 +32,18 @@ function showAfter(delay: number, el: HTMLElement){
         setTimeout(function() { el.classList.remove("hide") }, delay);
 }
 
-function continueStory(app: HTMLDivElement, story: InstanceType<typeof Story>, medias: Medias): void {
+function restart(app: HTMLDivElement, story: InstanceType<typeof Story>): void {
+  story.ResetState();
+  continueStory(app, story);
+}
+
+function continueStory(app: HTMLDivElement, story: InstanceType<typeof Story>): void {
 	var outerScrollContainer = app.querySelector<HTMLDivElement>('.outerContainer')!;
 	var storyContainer = app.querySelector<HTMLDivElement>('#story')!;
 
 	let delay = 0.0;
+
+	var olderParagraphs = app.querySelectorAll<HTMLElement>('p');
 
   while(story.canContinue) {
     const paragraphText = story.Continue();
@@ -50,29 +55,19 @@ function continueStory(app: HTMLDivElement, story: InstanceType<typeof Story>, m
     if(tags){
       tags.forEach((tagstring: string) => {
         const [tag, value] = tagstring.split(":", 2).map(s => s.trim())
-        if(tag == "PICTURE"){
-          if(isMediaName(value)){
-            switchImage(medias[value])
-          } 
-        }
-
-        if(tag == "LOCATION"){
-          locationContainer.innerHTML = `${value}`
-        }
 
         if( tag == "CLEAR" || tag == "RESTART" ) {
             storyContainer.innerHTML = "";
 
             if( tag == "RESTART" ) {
-                locationContainer.innerHTML = `Inkjam 2021`
                 stopContinue = true;;
-                restart(app, story, medias);
-                
+                restart(app, story);
             }
         }
 
-        if( splitTag && splitTag.property == "CLASS" ) {
-            customClasses.push(val);
+        if( tag == "CLASS" ) {
+            customClasses.push(value);
+            console.log(customClasses)
         }
 
       })
@@ -101,7 +96,7 @@ function continueStory(app: HTMLDivElement, story: InstanceType<typeof Story>, m
                                 let index = parseInt(event.target.dataset["choiceIndex"] ?? "8");
                                 story.ChooseChoiceIndex(index);
                                 storyContainer.querySelectorAll<HTMLDivElement>('.choice').forEach(elt => elt.remove())
-                                continueStory(app, story, medias);
+                                continueStory(app, story);
 
                                 outerScrollContainer.scrollTo(0,storyContainer.scrollHeight);
                             }
@@ -121,5 +116,9 @@ function continueStory(app: HTMLDivElement, story: InstanceType<typeof Story>, m
     });
 
   }
+
+  olderParagraphs.forEach(p => {
+  	p.classList.add("faded");
+  })
 
 }

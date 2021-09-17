@@ -5,21 +5,23 @@ LIST Backpack = doudou, gourde, sandwich, mouchoirs
 -> init
 
 === init
-Pierre s'ennuie dans sa chambre. Papa est en bas.
-Il a une idée : il pourrait aller voir son papi et sa mamie !
+Pierre est un petit garçon qui s'ennuie dans sa chambre. <>
+Son Papa est en bas à s'affairer. <>
+Pierre s'ennuie tellement. Il a déjà joué avec tous ses jouets. #CLASS: lettrine
+Il a soudain une idée : il pourrait aller voir son papi et sa mamie !
 
 -(opts)
 {opts == 3: Papa ne semble pas vraiment disposé à accompagner Pierre...}
 {opts == 4: Papa ne semble vraiment pas disposé à accompagner Pierre !}
 
 + [{Demander à|{~Insister auprès de|Demander encore à|Redemander à}} papa.]
-    – Papa{, on peut aller voir papi et mamie|, on peut y aller maintenant|, j'aimerais vraiment aller voir papi et mamie|, quand est-ce qu'on va voir papi et mami} ?
+    – Papa{, on peut aller voir papi et mamie ?|, on peut y aller maintenant ?|, j'aimerais vraiment aller voir papi et mamie !|, quand est-ce qu'on va voir papi et mamie ?}
     – {~Je ne peux pas|Pas maintenant}, 
       <> {~je dois faire la vaisselle|je dois faire la lessive|je travaille}, 
       <> {~tout à l'heure|attends un peu}.
     ->opts
 +{opts > 3} [Faire son sac.]
-    – Tant pis, j'irai tout seul !
+    – Tant pis, j'irai tout seul ! déclare alors Pierre.
     -> sac
 
 === sac
@@ -47,7 +49,8 @@ Pierre décide de préparer tout seul son sac pour le voyage.
     
 === foret
 Pierre fait un signe à son papa, pousse la porte et s'engage sur le petit chemin.
-Pierre arrive dans une grande forêt toute sombre.
+
+Le petit garçon arrive dans une grande forêt toute sombre. #CLASS: lettrine
 -> path_choice
 
 LIST DirectionsForet = front, left, right
