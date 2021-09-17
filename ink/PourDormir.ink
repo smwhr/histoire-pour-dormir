@@ -17,7 +17,7 @@ Il a soudain une idée : il pourrait aller voir son papi et sa mamie !
 + [{Demander à|{~Insister auprès de|Demander encore à|Redemander à}} papa.]
     – Papa{, on peut aller voir papi et mamie ?|, on peut y aller maintenant ?|, j'aimerais vraiment aller voir papi et mamie !|, quand est-ce qu'on va voir papi et mamie ?}
     – {~Je ne peux pas|Pas maintenant}, 
-      <> {~je dois faire la vaisselle|je dois faire la lessive|je travaille}, 
+      <> {~je dois faire la vaisselle|je dois faire la lessive|je travaille|je dois coucher le bébé}, 
       <> {~tout à l'heure|attends un peu}.
     ->opts
 +{opts > 3} [Faire son sac.]
@@ -32,7 +32,7 @@ Pierre décide de préparer tout seul son sac pour le voyage.
     ~ Backpack += doudou
     -> opts
 * [Remplir une gourde d'eau]
-    On ferme bien le bouchon pour ne pas que la gourde fuie dans le sac !
+    On ferme bien le bouchon pour ne pas que la gourde coule dans le sac !
     ~ Backpack += gourde
     -> opts
 * [Se faire un sandwich]
@@ -50,13 +50,17 @@ Pierre décide de préparer tout seul son sac pour le voyage.
 === foret
 Pierre fait un signe à son papa, pousse la porte et s'engage sur le petit chemin.
 
-Le petit garçon arrive dans une grande forêt toute sombre. #CLASS: lettrine
+Le petit garçon arrive devant une grande forêt. Elle est toute sombre. <>
+On y entend le bruit des animaux qui y vivent : des coucous, des hiboux : <>
+rien de bien méchant en tout cas ! #CLASS: lettrine
+
+Pierre entre dans la forêt. <>
 -> path_choice
 
 LIST DirectionsForet = front, left, right
 LIST ForestFear = (okay), lost, fear, terrified
 = path_choice
-Pierre arrive à un embranchement.
+Il arrive à un embranchement.
 
 -(opts)
 {continue == 4: 
