@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+yarn-error.log
+
+dist-ssr
+*.local
+backgrounds
+originals
+resources/Icon.icns
+
+dist

@@ -1,0 +1,27 @@
+{
+  "name": "pourdormir",
+  "author": "Ju/smwhr",
+  "description": "Pour Dormir - Fiction Interactive",
+  "license": "CC-BY-SA-4.0",
+  "version": "0.1.0",
+  "main": "dist/electron.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && tsc src/electron.ts --outDir dist && node scripts/distPackage.js",
+    "serve": "vite preview",
+    "start": "yarn build && electron ./dist/electron.js",
+    "tauri": "tauri",
+    "ink": "inklecate -o data/PourDormir.ink.json ink/PourDormir.ink && node scripts/cleanJson.js data/PourDormir.ink.json",
+    "butler:html": "butler push dist smwhr/histoire-pour-dormir:html",
+    "release:html": "yarn build && yarn butler:html",
+    "upload:html": "yarn build && butler push dist smwhr/histoire-pour-dormir:html"
+  },
+  "devDependencies": {
+    "sass": "^1.38.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.4"
+  },
+  "dependencies": {
+    "inkjs": "^2.0.0"
+  }
+}
