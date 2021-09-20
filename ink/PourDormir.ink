@@ -183,15 +183,16 @@ Le Loup {not donne_sandwich: encore tout affaibli} mène Pierre {donne_sandwich:
     * {Backpack has sandwich} – Je préfère le garder pour moi !
         – Oh ! Bon, d'accord, tant pis, soupire le Loup.
         -> end
-    
+- else: 
+    -> end    
 }
--> end
+
 
 
 = donne_sandwich
 Pierre donne son sandwich au loup gentil qui se sent tout de suite beaucoup mieux !
 Son poil noir s'éclaircit. Maintenant ça se voit que c'est un loup gentil !
-– Merci beacoup ! s'exclame le Loup.
+– Merci beaucoup ! s'exclame le Loup.
 ~ Backpack -= sandwich
 ->->
 
