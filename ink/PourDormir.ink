@@ -84,14 +84,15 @@ Il arrive à un embranchement.
     Barnabé commence à avoir un peu faim...
 }
 
-+{RANDOM(0,1) > 0} [{ForestFear == terrified: Courir|Continuer} tout droit.]
+
+~ temp ExcludedWay = LIST_RANDOM(LIST_ALL(DirectionsForet))
+
++{ExcludedWay != front} [{ForestFear == terrified: Courir|Continuer} tout droit.]
     -> continue(front)
-+{RANDOM(0,1) > 0} [{ForestFear == terrified: Courir|Continuer} vers la droite.]
++{ExcludedWay != right} [{ForestFear == terrified: Courir|Continuer} vers la droite.]
     -> continue(right)
-+{ (RANDOM(0,1) > 0 and CHOICE_COUNT() < 2) } [{ForestFear == terrified: Courir|Continuer} vers la gauche.]
++{ExcludedWay != left} [{ForestFear == terrified: Courir|Continuer} vers la gauche.]
     -> continue(left)
-+{CHOICE_COUNT() < 2} [{ForestFear == terrified: Courir|Continuer} tout droit.]
-    -> continue(front)
 +{ForestFear >= fear and continue > 10} [{face_au_loup < 3:{~Faire face à l'Ombre|Se confronter à l'Ombre|Affronter l'Ombre}|Bon, si on arrêtait de fuir un peu ?}]
     ->face_au_loup
 * {Backpack has sandwich and continue >= 12} [Manger le sandwich]

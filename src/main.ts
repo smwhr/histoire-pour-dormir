@@ -67,7 +67,6 @@ function continueStory(app: HTMLDivElement, story: InstanceType<typeof Story>): 
 
         if( tag == "CLASS" ) {
             customClasses.push(value);
-            console.log(customClasses)
         }
 
       })
