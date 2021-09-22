@@ -8,6 +8,7 @@ LIST Backpack = doudou, gourde, sandwich, mouchoirs
 Pierre est un petit garçon qui s'ennuie dans sa chambre. <>
 Son Papa est en bas à s'affairer. <>
 Pierre s'ennuie tellement. Il a déjà joué avec tous ses jouets. #CLASS: lettrine
+<hr />
 Il a soudain une idée : il pourrait aller voir son papi et sa mamie !
 
 -(opts)
@@ -49,6 +50,8 @@ Pierre décide de préparer tout seul son sac pour le voyage.
     
 === foret
 Pierre fait un signe à son papa, pousse la porte et s'engage sur le petit chemin.
+
+<hr />
 
 Le petit garçon arrive devant une grande forêt. Elle est toute sombre. <>
 On y entend le bruit des animaux qui y vivent : des coucous, des hiboux : <>

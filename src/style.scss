@@ -1,14 +1,21 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=MedievalSharp&family=Fira+Code:wght@300&family=Podkova&family=DM+Serif+Display&family=Trispace:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Libre+Baskerville&family=DM+Serif+Display&family=Trispace:wght@100&display=swap");
 
+@font-face {
+    font-family: 'Apex Lake Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Apex Lake Regular'), url('fonts/ApexLake-Regular.woff') format('woff');
+}
 
 :root {
   --color-dark: #666;
   --color-background: #fcfbf7;
   --color-text: var(--color-dark);
   --color-dialog:  #111;
-  --color-hi: #31814d;
-  --color-hi-active: #26643c;
+  --color-alt: #ff3d33;
+  --color-hi: var(--color-alt);
+  --color-hi-active: var(--color-alt);
   --color-faded: #ddd;
   --color-lightgray: #eee;
   --color-form: white;
@@ -24,7 +31,7 @@
   --setting-theme: "auto";
 
   --dialog: "Fira Code";
-  --scenic: "Podkova";
+  --scenic: "Libre Baskerville";
   --text:  "Fira Code";
 }
 
@@ -76,7 +83,7 @@ body.switched {
 h1,
 h2 {
     text-align: center;
-    font-family: Podkova;
+    font-family: var(--scenic);
     margin: 0;
     padding: 0;
 }
@@ -84,6 +91,8 @@ h2 {
 h1 {
     font-size: 30pt;
     margin-bottom: 10px;
+    color: var(--color-alt);
+    text-transform: uppercase;
 }
 
 h2 {
@@ -156,36 +165,40 @@ h2 {
     transition: background-color 0.6s;
 }
 
+hr {
+    background:url("images/divider.png") no-repeat top center;
+    height: 20px;
+    border: none !important;
+    width: 100%;
+    background-size: contain;
+    margin: 2em 0;
+}
+
 p {
-    font-size: 13pt;
+    font-family: var(--dialog);
     color:  var(--color-dialog);
+    font-size: 13pt;
     line-height: 1.7em;
     font-weight: lighter;
-    font-family: var(--dialog);
 }
 
 p.scenic, p.infotext{
     font-family: var(--scenic);
     color:  var(--color-text);
-    text-align: right;
     font-size: 15pt;
+    text-align: right;
 }
 
 p.didascalie{
-    font-weight: normal;
-    color:  var(--color-text);
     font-family: var(--text);
+    color:  var(--color-text);
+    font-weight: normal;
 }
 p.lettrine::first-letter {
-  padding: 0.5rem .3rem 0rem;
-  margin: 0 .3rem 0 0;
-  border: 2px solid;
-  border-radius: 8px;
-  font-family: "MedievalSharp", monospace;
-  font-size: 4rem;
-  display: block;
-  width: 4rem;
-  float: left;
+  padding: 0;
+  margin: 0 0 0 0;
+  font-family: "Apex Lake Regular", monospace;
+  font-size: 3rem;
   line-height: 1;
   text-align: center;
 }
