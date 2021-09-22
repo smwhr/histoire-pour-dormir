@@ -1,19 +1,19 @@
-~ SEED_RANDOM(230)
+//~ SEED_RANDOM(235)
 
 LIST Backpack = doudou, gourde, sandwich, mouchoirs
 
 -> init
 
 === init
-Pierre est un petit garçon qui s'ennuie dans sa chambre. <>
+Barnabé est un petit garçon qui s'ennuie dans sa chambre. <>
 Son Papa est en bas à s'affairer. <>
-Pierre s'ennuie tellement. Il a déjà joué avec tous ses jouets. #CLASS: lettrine
+Barnabé s'ennuie tellement. Il a déjà joué avec tous ses jouets. #CLASS: lettrine
 <hr />
 Il a soudain une idée : il pourrait aller voir son papi et sa mamie !
 
 -(opts)
-{opts == 3: Papa ne semble pas vraiment disposé à accompagner Pierre...}
-{opts == 4: Papa ne semble vraiment pas disposé à accompagner Pierre !}
+{opts == 3: Papa ne semble pas vraiment disposé à accompagner Barnabé...}
+{opts == 4: Papa ne semble vraiment pas disposé à accompagner Barnabé !}
 
 + [{Demander à|{~Insister auprès de|Demander encore à|Redemander à}} papa.]
     – Papa{, on peut aller voir papi et mamie ?|, on peut y aller maintenant ?|, j'aimerais vraiment aller voir papi et mamie !|, quand est-ce qu'on va voir papi et mamie ?}
@@ -22,11 +22,11 @@ Il a soudain une idée : il pourrait aller voir son papi et sa mamie !
       <> {~tout à l'heure|attends un peu}.
     ->opts
 +{opts > 3} [Faire son sac.]
-    – Tant pis, j'irai tout seul ! déclare alors Pierre.
+    – Tant pis, j'irai tout seul ! déclare alors Barnabé.
     -> sac
 
 === sac
-Pierre décide de préparer tout seul son sac pour le voyage.
+Barnabé décide de préparer tout seul son sac pour le voyage.
 -(opts)
 * [Prendre son doudou]
     Et hop, dans le sac le doudou !
@@ -49,7 +49,7 @@ Pierre décide de préparer tout seul son sac pour le voyage.
     
     
 === foret
-Pierre fait un signe à son papa, pousse la porte et s'engage sur le petit chemin.
+Barnabé fait un signe à son papa, pousse la porte et s'engage sur le petit chemin.
 
 <hr />
 
@@ -57,7 +57,7 @@ Le petit garçon arrive devant une grande forêt. Elle est toute sombre. <>
 On y entend le bruit des animaux qui y vivent : des coucous, des hiboux : <>
 rien de bien méchant en tout cas ! #CLASS: lettrine
 
-Pierre entre dans la forêt. <>
+Barnabé entre dans la forêt. <>
 -> path_choice
 
 LIST DirectionsForet = front, left, right
@@ -68,20 +68,20 @@ Il arrive à un embranchement.
 -(opts)
 {continue == 4: 
     ~ ForestFear ++
-    On dirait que Pierre s'est perdu...
+    On dirait que Barnabé s'est perdu...
 }
 {continue == 6: 
     ~ ForestFear ++
-    Pierre commence à avoir très peur dans cette grande forêt.
+    Barnabé commence à avoir très peur dans cette grande forêt.
 }
 
 {continue == 8: 
     ~ ForestFear ++
-    Une ombre mystérieuse semble poursuivre Pierre !
+    Une ombre mystérieuse semble poursuivre Barnabé !
 }
 
 {continue == 12: 
-    Pierre commence à avoir un peu faim...
+    Barnabé commence à avoir un peu faim...
 }
 
 +{RANDOM(0,1) > 0} [{ForestFear == terrified: Courir|Continuer} tout droit.]
@@ -95,18 +95,18 @@ Il arrive à un embranchement.
 +{ForestFear >= fear and continue > 10} [{face_au_loup < 3:{~Faire face à l'Ombre|Se confronter à l'Ombre|Affronter l'Ombre}|Bon, si on arrêtait de fuir un peu ?}]
     ->face_au_loup
 * {Backpack has sandwich and continue >= 12} [Manger le sandwich]
-    Pierre mange son sandwich, ça le rassure un peu.
+    Barnabé mange son sandwich, ça le rassure un peu.
     ~ Backpack -= sandwich
     ~ ForestFear--
     ->opts
     
 = continue(dir)
 {
-    - dir == front: Pierre {ForestFear == terrified: s'enfuit|continue} tout droit.
-    - dir == left: Pierre {ForestFear == terrified: s'enfuit|prend} à gauche.
-    - dir == right: Pierre {ForestFear == terrified: s'enfuit|prend} à droite.
+    - dir == front: Barnabé {ForestFear == terrified: s'enfuit|continue} tout droit.
+    - dir == left: Barnabé {ForestFear == terrified: s'enfuit|prend} à gauche.
+    - dir == right: Barnabé {ForestFear == terrified: s'enfuit|prend} à droite.
 }<> {ForestFear == terrified: 
-        {~L'Ombre le poursuit !| Plus vite, plus vite !|L'Ombre le rattrape !| L'Ombre semble s'éloigner... puis revenir !|Cours cours Pierre !}
+        {~L'Ombre le poursuit !| Plus vite, plus vite !|L'Ombre le rattrape !| L'Ombre semble s'éloigner... puis revenir !|Cours cours Barnabé !}
     }
 -> path_choice.opts
 
@@ -132,7 +132,7 @@ Mais oui c'est {|vraiment} un loup !
 
 -(met_loup)
 
-Le loup s'approche de Pierre en faisant des bruits terribles.
+Le loup s'approche de Barnabé en faisant des bruits terribles.
 + – Va t'en le loup !
     Le loup lâche un petit sanglot. 
 + – Ça va, le loup ?
@@ -172,7 +172,7 @@ Le loup s'approche de Pierre en faisant des bruits terribles.
         – Ce n'est pas grave, dit le Loup. Suis moi.
 
 -(mene_travers_foret)
-Le Loup {not donne_sandwich: encore tout affaibli} mène Pierre {donne_sandwich: d'un pas assuré} à travers la grande forêt. Ça fait tout de suite moins peur quand on a un guide !
+Le Loup {not donne_sandwich: encore tout affaibli} mène Barnabé {donne_sandwich: d'un pas assuré} à travers la grande forêt. Ça fait tout de suite moins peur quand on a un guide !
 
 {promet_sandwich:
     – Tu m'avais promis un sandwich, puis-je l'avoir ?
@@ -193,23 +193,23 @@ Le Loup {not donne_sandwich: encore tout affaibli} mène Pierre {donne_sandwich:
 
 
 = donne_sandwich
-Pierre donne son sandwich au loup gentil qui se sent tout de suite beaucoup mieux !
+Barnabé donne son sandwich au loup gentil qui se sent tout de suite beaucoup mieux !
 Son poil noir s'éclaircit. Maintenant ça se voit que c'est un loup gentil !
 – Merci beaucoup ! s'exclame le Loup.
 ~ Backpack -= sandwich
 ->->
 
 = end
-Le Loup dit au revoir à Pierre et retourne {donne_sandwich: en gambadant} dans la grande forêt {not donne_sandwich: en poussant des gémissements terribles}.
+Le Loup dit au revoir à Barnabé et retourne {donne_sandwich: en gambadant} dans la grande forêt {not donne_sandwich: en poussant des gémissements terribles}.
 -> riviere
 
 
 === riviere
-Pierre arrive au bord d'une large rivière.
+Barnabé arrive au bord d'une large rivière.
 * – Peut-être pourrais-je la traverser à la nage ?
 
 -
-Pierre se penche pour toucher l'eau. Il y a beaucoup trop de courant !
+Barnabé se penche pour toucher l'eau. Il y a beaucoup trop de courant !
 
 -> DONE
 
